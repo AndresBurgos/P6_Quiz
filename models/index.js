@@ -25,6 +25,7 @@ sequelize.import(path.join(__dirname,'user'));
 // Session
 sequelize.import(path.join(__dirname,'session'));
 
+<<<<<<< HEAD
 
 // Relation between models
 
@@ -40,6 +41,27 @@ quiz.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
 // Relation 1-to-N between User and Tip:
 user.hasMany(tip, {foreignKey: 'authorId'});
 tip.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
+=======
+// Create tables
+sequelize.sync()
+.then(() => console.log('Data Bases created successfully'))
+.then(() => sequelize.models.quiz.count())
+.then(count => {
+	if(!count){
+		return sequelize.models.quiz.bulkCreate([
+			{question: "Capital de Italia", answer: "Roma"},
+			{question: "Capital de Francia", answer: "París"},
+			{question: "Capital de España", answer: "Madrid"},
+			{question: "Capital de Portugal", answer: "Lisboa"}
+		]);
+	}
+})
+.catch(error => {
+    console.log("Error creating the data base tables:", error);
+    process.exit(1);
+});
+>>>>>>> practica6
+
 
 
 module.exports = sequelize;
