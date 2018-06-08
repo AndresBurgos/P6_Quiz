@@ -25,7 +25,6 @@ sequelize.import(path.join(__dirname,'user'));
 // Session
 sequelize.import(path.join(__dirname,'session'));
 
-<<<<<<< HEAD
 
 // Relation between models
 
@@ -41,7 +40,7 @@ quiz.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
 // Relation 1-to-N between User and Tip:
 user.hasMany(tip, {foreignKey: 'authorId'});
 tip.belongsTo(user, {as: 'author', foreignKey: 'authorId'});
-=======
+
 // Create tables
 sequelize.sync()
 .then(() => console.log('Data Bases created successfully'))
@@ -60,7 +59,6 @@ sequelize.sync()
     console.log("Error creating the data base tables:", error);
     process.exit(1);
 });
->>>>>>> practica6
 
 
 
